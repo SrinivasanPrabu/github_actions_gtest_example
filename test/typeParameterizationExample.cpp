@@ -13,6 +13,10 @@ class ModelBTempSesnor:public ITempSensor{
   public:
   virtual int getOutSideTemp(){return 23;}
 };
+class ModelCTempSensor: public ITempSensor{
+  public:
+  virtual int getOutsidetemp(){return 23;}
+}:
 class AutoTempRegulator{
   ITempSensor*tempSensorPtr;
   public:
@@ -28,6 +32,8 @@ template <>
 ITempSensor* createObject<ModelATempSensor>() { return new ModelATempSensor(); }
 template <>
 ITempSensor* createObject<ModelBTempSesnor>() { return new ModelBTempSesnor(); }
+template <>
+ITempSensor* createObject<ModelCTempSensor>() { return new ModelCTempSensor(); }
 
 template <typename T>
 class ModelATempSensorFixture:public testing::Test{
